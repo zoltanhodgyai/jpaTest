@@ -27,7 +27,7 @@
             </JPAEntityType>
         </JPAEntityTypes>
         <JPAEmbeddableTypes>
-            <JPAEmbeddableType name="Middle">
+            <JPAEmbeddableType name="MiddleKey">
                 <EDMComplexType>Middle</EDMComplexType>
                 <JPAAttributes>
                     <JPAAttribute name="left" exclude="true">Left</JPAAttribute>
