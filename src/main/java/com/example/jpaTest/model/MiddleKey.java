@@ -9,11 +9,11 @@ import java.io.Serializable;
 @Embeddable
 class MiddleKey implements Serializable {
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "leftS")
-    private Left left;
+    private Left leftS;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "rightS")
-    private Right right;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="rightS")
+    private Right rightS;
 }

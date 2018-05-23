@@ -19,7 +19,7 @@ class Right implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rightS")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Middle> middles;
 
     private String rightS;
