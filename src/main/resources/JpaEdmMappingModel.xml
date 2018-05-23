@@ -8,10 +8,11 @@
                 <EDMEntitySet>Lefts</EDMEntitySet>
                 <JPAAttributes>
                     <JPAAttribute name="id">ID</JPAAttribute>
+                    <JPAAttribute name="middles" exclude="true">Middles</JPAAttribute>
                     <JPAAttribute name="leftS">LeftS</JPAAttribute>
                 </JPAAttributes>
                 <JPARelationships>
-                    <JPARelationship name="middles">Middles</JPARelationship>
+                    <!--<JPARelationship name="middles">Middles</JPARelationship>-->
                 </JPARelationships>
             </JPAEntityType>
             <JPAEntityType name="Right">
@@ -19,22 +20,36 @@
                 <EDMEntitySet>Rights</EDMEntitySet>
                 <JPAAttributes>
                     <JPAAttribute name="id">ID</JPAAttribute>
+                    <JPAAttribute name="middles" exclude="true">Middles</JPAAttribute>
                     <JPAAttribute name="rightS">RightS</JPAAttribute>
                 </JPAAttributes>
                 <JPARelationships>
-                    <JPARelationship name="middles">Middles</JPARelationship>
+                    <!--<JPARelationship name="middles">Middles</JPARelationship>-->
+                </JPARelationships>
+            </JPAEntityType>
+            <JPAEntityType name="Middle">
+                <EDMEntityType>Middles</EDMEntityType>
+                <EDMEntitySet>Middles</EDMEntitySet>
+                <JPAAttributes>
+                    <JPAAttribute name="lefts" exclude="true">Left</JPAAttribute>
+                    <JPAAttribute name="rights" exclude="true">Right</JPAAttribute>
+                    <JPAAttribute name="middles">Middle</JPAAttribute>
+                </JPAAttributes>
+                <JPARelationships>
+                    <!--<JPARelationship name="lefts">Lefts</JPARelationship>-->
+                    <!--<JPARelationship name="rights">Rights</JPARelationship>-->
                 </JPARelationships>
             </JPAEntityType>
         </JPAEntityTypes>
         <JPAEmbeddableTypes>
-            <JPAEmbeddableType name="MiddleKey">
+            <!--<JPAEmbeddableType name="Middle">
                 <EDMComplexType>Middle</EDMComplexType>
                 <JPAAttributes>
-                    <JPAAttribute name="left" exclude="true">Left</JPAAttribute>
-                    <JPAAttribute name="right" exclude="true">Right</JPAAttribute>
+                    <JPAAttribute name="leftS" exclude="true">Left</JPAAttribute>
+                    <JPAAttribute name="rightS" exclude="true">Right</JPAAttribute>
                     <JPAAttribute name="middleS">Middle</JPAAttribute>
                 </JPAAttributes>
-            </JPAEmbeddableType>
+            </JPAEmbeddableType>-->
         </JPAEmbeddableTypes>
     </PersistenceUnit>
 </JPAEDMMappingModel>

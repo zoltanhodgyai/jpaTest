@@ -2,16 +2,23 @@ package com.example.jpaTest.model;
 
 import lombok.Data;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
-public class Middle {
+public class Middle implements Serializable {
 
-    @EmbeddedId
-    private MiddleKey leftKey;
+    @Id
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "leftS")
+    private Left leftS;
 
-    String middleS;
+    @Id
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="rightS")
+    private Right rightS;
+
+    private String middleS;
 
 }

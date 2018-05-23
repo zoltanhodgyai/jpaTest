@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,6 +18,9 @@ class Left implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "leftS")
+    private List<Middle> middles;
 
     private String leftS;
 }
