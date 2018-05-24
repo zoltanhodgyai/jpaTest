@@ -12,31 +12,34 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAServiceFactory;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
-import org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManagerFactory;
-import javax.validation.constraints.Null;
 
 @Component
 @Slf4j
+@Scope("request")
 public class JpaServiceFactory extends ODataJPAServiceFactory {
 
     private static final String PERSISTENCE_UNIT_NAME = "jpaTest";
 
-    private final EntityManagerFactory entityManagerFactory;
+    private final LocalContainerEntityManagerFactoryBean factoryBean;
 
-    public JpaServiceFactory(EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
+    @Autowired
+    public JpaServiceFactory(LocalContainerEntityManagerFactoryBean factoryBean) {
+        this.factoryBean = factoryBean;
     }
 
     @Override
     public ODataJPAContext initializeODataJPAContext() throws ODataJPARuntimeException {
         ODataJPAContext oDataJPAContext = this.getODataJPAContext();
         try {
-            oDataJPAContext.setEntityManagerFactory(entityManagerFactory);
+            oDataJPAContext.setEntityManagerFactory(factoryBean.getObject());
             oDataJPAContext.setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
-            oDataJPAContext.setJPAEdmExtension(new JpaExtension());
+            oDataJPAContext.setPageSize(Integer.MAX_VALUE);
             return oDataJPAContext;
         } catch (Exception e) {
             throw new RuntimeException(e);
