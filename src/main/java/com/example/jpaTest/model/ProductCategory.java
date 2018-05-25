@@ -22,7 +22,7 @@ public class ProductCategory {
     @EdmProperty
     private Integer id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
     @EdmNavigationProperty(name = "Products", toType = Product.class)
     private List<Product> products;
 

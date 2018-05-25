@@ -29,6 +29,6 @@ public class Middle implements Serializable {
     private Right rightS;
 
     @EdmProperty
-    private String middleS;
+    private String name;
 
 }

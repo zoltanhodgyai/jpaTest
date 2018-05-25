@@ -25,9 +25,9 @@ public class Right implements Serializable {
     private Integer id;
 
     @EdmProperty
-    private String rightS;
+    private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rightS")
     @EdmNavigationProperty(name = "Middles", toType = Middle.class)
     private List<Middle> middles;
 }
